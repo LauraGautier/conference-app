@@ -28,10 +28,34 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const formatDateForInput = (dateString) => {
+    if (!dateString) return '';
+    
+    try {
+      const date = new Date(dateString);
+      
+      if (isNaN(date.getTime())) {
+        console.warn('Date invalide:', dateString);
+        return '';
+      }
+      
+      return date.toISOString().split('T')[0];
+    } catch (error) {
+      console.error('Erreur de conversion de date:', error);
+      return '';
+    }
+  };
+
   useEffect(() => {
     if (conference) {
+      console.log('📅 Date reçue de l\'API:', conference.date);
+      
+      const formattedDate = formatDateForInput(conference.date);
+      console.log('📅 Date formatée pour input:', formattedDate);
+      
       setFormData({
         ...conference,
+        date: formattedDate, // ✅ Conversion de la date
         osMap: conference.osMap || {
           addressl1: '',
           addressl2: '',
@@ -347,7 +371,7 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
         <Card.Header className="d-flex justify-content-between align-items-center">
           <h6 className="mb-0">
             <i className="bi bi-person-badge me-2"></i>
-            Intervenants *
+            Intervenants
           </h6>
           <Button variant="outline-primary" size="sm" onClick={addSpeaker}>
             <i className="bi bi-plus"></i>
@@ -359,7 +383,7 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
               <Col md={5}>
                 <Form.Control
                   type="text"
-                  placeholder="Prénom"
+                  placeholder="Prénom *"
                   value={speaker.firstname}
                   onChange={(e) => handleSpeakerChange(index, 'firstname', e.target.value)}
                   required
@@ -368,7 +392,7 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
               <Col md={5}>
                 <Form.Control
                   type="text"
-                  placeholder="Nom"
+                  placeholder="Nom *"
                   value={speaker.lastname}
                   onChange={(e) => handleSpeakerChange(index, 'lastname', e.target.value)}
                   required
@@ -395,7 +419,7 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
         <Card.Header className="d-flex justify-content-between align-items-center">
           <h6 className="mb-0">
             <i className="bi bi-people me-2"></i>
-            Organisateurs *
+            Organisateurs
           </h6>
           <Button variant="outline-primary" size="sm" onClick={addStakeholder}>
             <i className="bi bi-plus"></i>
@@ -408,7 +432,7 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
                 <Col md={3}>
                   <Form.Control
                     type="text"
-                    placeholder="Prénom"
+                    placeholder="Prénom *"
                     value={stakeholder.firstname}
                     onChange={(e) => handleStakeholderChange(index, 'firstname', e.target.value)}
                     required
@@ -417,7 +441,7 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
                 <Col md={3}>
                   <Form.Control
                     type="text"
-                    placeholder="Nom"
+                    placeholder="Nom *"
                     value={stakeholder.lastname}
                     onChange={(e) => handleStakeholderChange(index, 'lastname', e.target.value)}
                     required
