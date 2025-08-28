@@ -28,10 +28,30 @@ const ConferenceForm = ({ conference, onSave, onCancel }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const formatDateForInput = (dateString) => {
+    if (!dateString) return '';
+    
+    try {
+      const date = new Date(dateString);
+      
+      if (isNaN(date.getTime())) {
+        console.warn('Date invalide:', dateString);
+        return '';
+      }
+      
+      return date.toISOString().split('T')[0];
+    } catch (error) {
+      console.error('Erreur de conversion de date:', error);
+      return '';
+    }
+  };
+
   useEffect(() => {
     if (conference) {
+      const formattedDate = formatDateForInput(conference.date);
       setFormData({
         ...conference,
+        date: formattedDate,
         osMap: conference.osMap || {
           addressl1: '',
           addressl2: '',
