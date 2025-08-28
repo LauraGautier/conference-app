@@ -6,7 +6,9 @@ import { useAuth } from '../../contexts/AuthContext';
 const ProtectedRoute = ({ children, requireAdmin = false }) => {
   const { isAuthenticated, isAdmin } = useAuth();
 
-  if (!isAuthenticated()) {
+  const hasValidToken = localStorage.getItem('token');
+  
+  if (!isAuthenticated() || !hasValidToken) {
     return <Navigate to="/login" />;
   }
 
