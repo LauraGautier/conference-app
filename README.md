@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# CyberConf - Gestion de Conférences
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application React pour la consultation et la gestion de conférences.
 
-## Available Scripts
+## Spécifications fonctionnelles réalisées
 
-In the project directory, you can run:
+✅ **Pages implémentées**
 
-### `npm start`
+- Page d'accueil : liste de toutes les conférences (utilisateur connecté + admin)
+- Fiche détaillée d'une conférence (utilisateur connecté + admin)
+- Modal de création d'une conférence (admin)
+- Modal de modification d'une conférence (admin)
+- Page de connexion (accessible à tous)
+- Tableau d'administration avec accès rapides (admin)
+- Interface de gestion des conférences (admin)
+- Interface de gestion des utilisateurs (admin)
+- Page de changement du mot de passe (utilisateur connecté + admin)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ **Interface utilisateur**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Code couleur spécifique pour chaque conférence (thème visuel)
 
-### `npm test`
+✅ **Gestion des conférences**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Création, modification et suppression (admin)
 
-### `npm run build`
+✅ **Gestion des utilisateurs**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Consultation de la liste des utilisateurs avec tri par rôle (admin)
+- Promotion d'utilisateurs en administrateurs (admin)
+- Suppression d'un utilisateur (admin et ne peut pas se supprimer lui-même!)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Note : La suppression d'un utilisateur et le changement de mot de passe étaient évoqués dans l'API via les routes existantes mais n'étaient pas mentionnées du tout dans le sujet donc (apparemment) pas obligatoires, j'ai quand même tout implémenté! Je ne commente jamais énormément mon code quand je travaille seule mais j'ai quand même mis quelques commentaires pour mieux identifier les différents éléments des fichiers.**
